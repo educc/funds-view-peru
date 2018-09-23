@@ -2,9 +2,7 @@ import os
 import time
 import json
 import pandas
-from algo import AlgoTransform
-from algo import AlgoAllTime
-from algo import AlgoYearly
+from algo import *
 
 _DATA_PATH = "./data"
 _FILENAME_FUNDS = "manager_funds.json"
@@ -96,7 +94,7 @@ class ProcessData:
 def main():
     start = time.time()
     
-    algo = AlgoYearly()
+    algo = AlgoAnnualised()
 
     manager = ManagerProcessData(_FILENAME_FUNDS)
     result = manager.process_all(_DATA_PATH, algo)

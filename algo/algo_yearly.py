@@ -22,7 +22,7 @@ class AlgoYearly(AlgoTransform):
             return 0
         
         df = self.add_columns(df)
-
+        
         df = df[self.COL_VALUE].groupby(df[self.COL_YEAR]).agg({
             self.COL_FIRST: lambda x: x.iloc[0],
             self.COL_LAST:  lambda x: x.iloc[-1],
@@ -34,7 +34,7 @@ class AlgoYearly(AlgoTransform):
 
     def add_columns(self, df:pandas.DataFrame):
         df[self.COL_YEAR] = df.apply(lambda x: x[self.COL_DATE].strftime("%Y") , axis=1)
-        df[self.COL_YEAR_MONTH] = df.apply(lambda x: x[self.COL_DATE].strftime("%Y%m") , axis=1)
+        #df[self.COL_YEAR_MONTH] = df.apply(lambda x: x[self.COL_DATE].strftime("%Y%m") , axis=1)
         df = df.set_index([self.COL_DATE])
         return df
 
